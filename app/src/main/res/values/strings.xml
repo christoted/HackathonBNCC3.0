@@ -1,3 +1,50 @@
 <resources>
     <string name="app_name">NontoninAja</string>
+
+    <string-array name="data_text_title">
+        <item>Super Junior</item>
+        <item>Blackpink</item>
+    </string-array>
+
+    <string-array name="data_text_content">
+        <item>Super junior YES</item>
+        <item>Blackpink YES</item>
+    </string-array>
+
+    <string-array name="data_date">
+        <item>10 Oktober 2020</item>
+        <item>11 Oktober 2020</item>
+    </string-array>
+
+    <string-array name="data_time">
+        <item>13.00 - 15.00</item>
+        <item>10.00 - 13.00</item>
+    </string-array>
+
+    <string-array name="data_type">
+        <item>kpop</item>
+        <item>kpop</item>
+    </string-array>
+
+    <array name="data_img_content">
+        <item>@drawable/ic_launcher_background</item>
+        <item>@drawable/ic_launcher_background</item>
+    </array>
+
+    <array name="data_img_date">
+        <item>@drawable/ic_launcher_background</item>
+        <item>@drawable/ic_launcher_background</item>
+    </array>
+
+    <array name="data_img_time">
+        <item>@drawable/ic_launcher_background</item>
+        <item>@drawable/ic_launcher_background</item>
+    </array>
+
+    <array name="data_img_type">
+        <item>@drawable/ic_launcher_background</item>
+        <item>@drawable/ic_launcher_background</item>
+    </array>
+
+
 </resources>
