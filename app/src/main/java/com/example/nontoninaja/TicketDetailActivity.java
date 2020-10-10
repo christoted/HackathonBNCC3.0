@@ -1,0 +1,67 @@
+package com.example.nontoninaja;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class TicketDetailActivity extends AppCompatActivity {
+
+    ImageView id_imgView_TicketDetail_eventImg;
+    TextView id_tv_TicketDetail_eventName;
+    TextView id_tv_TicketDetail_eventCategory;
+    TextView id_tv_TicketDetail_eventDesc;
+    TextView id_tv_TicketDetail_eventLocation;
+    TextView id_tv_TicketDetail_eventPrice;
+    TextView id_tv_TicketDetail_ticketQty;
+    Button id_btn_TicketDetail_addTicket;
+    Button id_btn_TicketDetail_plusQty;
+    Button id_btn_TicketDetail_minusQty;
+
+    String eventName,eventCategory,eventDesc,eventLocation,eventPrice,eventImgFile;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ticket_detail);
+
+        Intent intent = getIntent();
+        initItems(intent);
+    }
+
+    private void initItems(Intent intent) {
+
+        id_imgView_TicketDetail_eventImg.findViewById(R.id.eventImg);
+        id_tv_TicketDetail_eventName.findViewById(R.id.eventName);
+        id_tv_TicketDetail_eventCategory.findViewById(R.id.eventCategory);
+        id_tv_TicketDetail_eventDesc.findViewById(R.id.eventDesc);
+        id_tv_TicketDetail_eventLocation.findViewById(R.id.eventLocation);
+        id_tv_TicketDetail_eventPrice.findViewById(R.id.eventPrice);
+        id_btn_TicketDetail_addTicket.findViewById(R.id.addTicket);
+
+        eventName = intent.getStringExtra("eventName");
+        eventCategory = intent.getStringExtra("eventCategory");
+        eventDesc = intent.getStringExtra("eventDesc");
+        eventLocation = intent.getStringExtra("eventLocation");
+        eventPrice = intent.getStringExtra("eventPrice");
+        eventImgFile = intent.getStringExtra("eventImg");
+
+        id_imgView_TicketDetail_eventImg.setImageResource(Integer.parseInt(eventImgFile));
+        id_tv_TicketDetail_eventName.setText(eventName);
+        id_tv_TicketDetail_eventCategory.setText(eventCategory);
+        id_tv_TicketDetail_eventDesc.setText(eventDesc);
+        id_tv_TicketDetail_eventLocation.setText(eventLocation);
+        id_tv_TicketDetail_eventPrice.setText(eventPrice);
+
+        id_btn_TicketDetail_addTicket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                id_btn_TicketDetail_addTicket.setVisibility(View.GONE);
+            }
+        });
+    }
+}
