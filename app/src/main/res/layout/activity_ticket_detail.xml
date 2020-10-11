@@ -58,6 +58,7 @@
             app:layout_constraintTop_toBottomOf="@+id/id_txtView_TicketDetail_ticketCategory">
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/id_rv_TicketDetail_rvItems"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>

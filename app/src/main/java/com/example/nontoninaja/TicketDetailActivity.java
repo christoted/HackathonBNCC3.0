@@ -1,6 +1,8 @@
 package com.example.nontoninaja;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.nontoninaja.Model.MyTicket;
@@ -28,6 +31,7 @@ public class TicketDetailActivity extends AppCompatActivity {
     Button id_btn_TicketDetail_addTicket;
     Button id_btn_TicketDetail_plusQty;
     Button id_btn_TicketDetail_minusQty;
+    RecyclerView id_rv_TicketDetail_rvItems;
     final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
 
@@ -54,6 +58,8 @@ public class TicketDetailActivity extends AppCompatActivity {
         id_btn_TicketDetail_addTicket.findViewById(R.id.id_btn_TicketDetail_btnBuy);
         id_tv_TicketDetail_eventDate.findViewById(R.id.id_txtView_TicketDetail_eventDate);
         id_tv_TicketDetail_eventTime.findViewById(R.id.id_txtView_TicketDetail_eventTime);
+        id_rv_TicketDetail_rvItems.findViewById(R.id.id_rv_TicketDetail_rvItems);
+
 
         eventName = intent.getStringExtra("eventName");
         eventCategory = intent.getStringExtra("eventCategory");
@@ -87,6 +93,9 @@ public class TicketDetailActivity extends AppCompatActivity {
                 }
             }
         });
+        id_rv_TicketDetail_rvItems.setLayoutManager(new LinearLayoutManager(this));
+        id_rv_TicketDetail_rvItems.setAdapter(adapter);
+
     }
     private void redirectToRegisterLogin()
     {
