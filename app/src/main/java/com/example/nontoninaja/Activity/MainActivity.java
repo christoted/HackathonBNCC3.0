@@ -1,4 +1,4 @@
-package com.example.nontoninaja;
+package com.example.nontoninaja.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -12,6 +12,8 @@ import com.example.nontoninaja.Fragment.HomeFragment;
 import com.example.nontoninaja.Fragment.MyTicketFragment;
 import com.gauravk.bubblenavigation.IBubbleNavigation;
 import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
+
+import com.example.nontoninaja.R;
 
 public class MainActivity extends AppCompatActivity {
 
