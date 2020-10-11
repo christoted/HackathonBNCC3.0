@@ -94,12 +94,12 @@ public class TicketDetailActivity extends AppCompatActivity {
             }
         });
         id_rv_TicketDetail_rvItems.setLayoutManager(new LinearLayoutManager(this));
-        id_rv_TicketDetail_rvItems.setAdapter(adapter);
+        //id_rv_TicketDetail_rvItems.setAdapter(adapter);
 
     }
     private void redirectToRegisterLogin()
     {
-        Intent intent = new Intent(TicketDetailActivity.this,RegisterActivity.class);
-        startActivity(intent);
+      //  Intent intent = new Intent(TicketDetailActivity.this,RegisterActivity.class);
+     //   startActivity(intent);
     }
 }

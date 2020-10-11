@@ -1,25 +1,6 @@
 package com.example.nontoninaja.Model;
 
 public class MyTicket {
-    private String txtTitle,txtContent,txtDate,txtTime,txtType;
-    private int imgContent, imgDate, imgTime, imgType;
-
-        public MyTicket(String txtTitle, String txtContent, String txtDate, String txtTime, String txtType, int imgContent, int imgDate, int imgTime, int imgType) {
-        this.txtTitle = txtTitle;
-        this.txtContent = txtContent;
-        this.txtDate = txtDate;
-        this.txtTime = txtTime;
-        this.txtType = txtType;
-        this.imgContent = imgContent;
-        this.imgDate = imgDate;
-        this.imgTime = imgTime;
-        this.imgType = imgType;
-    }
-
-    public MyTicket() {
-
-    }
-
     public String getTxtTitle() {
         return txtTitle;
     }
@@ -28,12 +9,12 @@ public class MyTicket {
         this.txtTitle = txtTitle;
     }
 
-    public String getTxtContent() {
-        return txtContent;
+    public String getTxtCategory() {
+        return txtCategory;
     }
 
-    public void setTxtContent(String txtContent) {
-        this.txtContent = txtContent;
+    public void setTxtCategory(String txtCategory) {
+        this.txtCategory = txtCategory;
     }
 
     public String getTxtDate() {
@@ -52,43 +33,46 @@ public class MyTicket {
         this.txtTime = txtTime;
     }
 
-    public String getTxtType() {
-        return txtType;
+    public String getTxtDescription() {
+        return txtDescription;
     }
 
-    public void setTxtType(String txtType) {
-        this.txtType = txtType;
+    public void setTxtDescription(String txtDescription) {
+        this.txtDescription = txtDescription;
     }
 
-    public int getImgContent() {
-        return imgContent;
+    public int getImgEvent() {
+        return imgEvent;
     }
 
-    public void setImgContent(int imgContent) {
-        this.imgContent = imgContent;
+    public void setImgEvent(int imgEvent) {
+        this.imgEvent = imgEvent;
     }
 
-    public int getImgDate() {
-        return imgDate;
+    private String txtTitle;
+    private String txtCategory;
+    private String txtDate;
+    private String txtTime;
+    private String txtDescription;
+
+    public String getTxtLocation() {
+        return txtLocation;
     }
 
-    public void setImgDate(int imgDate) {
-        this.imgDate = imgDate;
+    public void setTxtLocation(String txtLocation) {
+        this.txtLocation = txtLocation;
     }
 
-    public int getImgTime() {
-        return imgTime;
-    }
+    private String txtLocation;
+    private int imgEvent;
 
-    public void setImgTime(int imgTime) {
-        this.imgTime = imgTime;
-    }
-
-    public int getImgType() {
-        return imgType;
-    }
-
-    public void setImgType(int imgType) {
-        this.imgType = imgType;
+    public MyTicket(String txtTitle, String txtCategory, String txtDate, String txtTime, String txtDescription,int imgEvent,String txtLocation) {
+        this.txtTitle = txtTitle;
+        this.txtCategory = txtCategory;
+        this.txtDate = txtDate;
+        this.txtTime = txtTime;
+        this.txtDescription = txtDescription;
+        this.imgEvent = imgEvent;
+        this.txtLocation = txtLocation;
     }
 }
