@@ -69,7 +69,7 @@ public class TicketDetailActivity extends AppCompatActivity {
         eventImgFile = intent.getIntExtra("eventImg",0);
         eventDate = intent.getStringExtra("eventDate");
         eventTime = intent.getStringExtra("eventTime");
-        final MyTicket myTicket = new MyTicket(eventName,eventCategory,eventDate,eventTime,eventDesc,eventImgFile,eventLocation);
+      //  final MyTicket myTicket = new MyTicket(eventName,eventCategory,eventDate,eventTime,eventDesc,eventImgFile,eventLocation);
 
         id_imgView_TicketDetail_eventImg.setImageResource(eventImgFile);
         id_tv_TicketDetail_eventName.setText(eventName);
@@ -80,19 +80,19 @@ public class TicketDetailActivity extends AppCompatActivity {
         id_tv_TicketDetail_eventTime.setText(eventTime);
         id_tv_TicketDetail_eventDate.setText(eventDate);
 
-        id_btn_TicketDetail_addTicket.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(mAuth.getCurrentUser() != null)
-                {
-                    Intent intent1 = new Intent(TicketDetailActivity.this, TransactionSummary.class);
-                    intent1.putExtra("myTicket", (Parcelable) myTicket);
-
-                }else{
-                    redirectToRegisterLogin();
-                }
-            }
-        });
+//        id_btn_TicketDetail_addTicket.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if(mAuth.getCurrentUser() != null)
+//                {
+//                    Intent intent1 = new Intent(TicketDetailActivity.this, TransactionSummary.class);
+//                    intent1.putExtra("myTicket", (Parcelable) myTicket);
+//
+//                }else{
+//                    redirectToRegisterLogin();
+//                }
+//            }
+//        });
         id_rv_TicketDetail_rvItems.setLayoutManager(new LinearLayoutManager(this));
         //id_rv_TicketDetail_rvItems.setAdapter(adapter);
 
