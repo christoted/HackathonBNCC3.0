@@ -7,7 +7,7 @@
     tools:context=".Activity.SummaryActivity">
 
     <TextView
-        android:id="@+id/id_tv_summary_title"
+        android:id="@+id/id_txtView_TransactionSummary_eventName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/id_txtView_TransactionSummary_eventDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -55,7 +55,7 @@
             app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/id_txtView_TransactionSummary_eventTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -67,7 +67,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/id_txtView_TransactionSummary_eventLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -103,12 +103,12 @@
                 android:textColor="@color/white"
                 android:textSize="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/id_tv_summary_order_total"
+                app:layout_constraintEnd_toStartOf="@+id/id_txtView_TransactionSummary_adminFee"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/id_tv_summary_order_total"
+                android:id="@+id/id_txtView_TransactionSummary_adminFee"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:text="Total : 2.500.000"
@@ -147,10 +147,10 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_tv_summary_title">
+        app:layout_constraintTop_toBottomOf="@+id/id_txtView_TransactionSummary_eventName">
 
         <TextView
-            android:id="@+id/id_tv_summary_genre"
+            android:id="@+id/id_txtView_TransactionSummary_eventCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Music,K-Pop,Online-Concert"
@@ -220,7 +220,7 @@
                         android:id="@+id/id_tv_item_summary_type_ticket_reguler"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2x Reguler"
+                        android:text="Regular"
                         android:textColor="@color/black"
                         android:textSize="14dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -242,11 +242,12 @@
                 android:src="@drawable/ic_btn_minus" />
 
             <TextView
+                android:id="@+id/id_tv_summary_count_number_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:text="1"
+                android:text="0"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -282,7 +283,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="30dp"
-                        android:text="Rp500.000"
+                        android:text="Rp600.000"
                         android:textColor="@color/black"
                         android:textSize="14dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -296,7 +297,7 @@
                         android:id="@+id/id_tv_item_summary_type_ticket_vip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1x VIP"
+                        android:text="VIP"
                         android:textColor="@color/black"
                         android:textSize="14dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -318,11 +319,12 @@
                 android:src="@drawable/ic_btn_minus" />
 
             <TextView
+                android:id="@+id/id_tv_summary_count_number_vip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:text="1"
+                android:text="0"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -358,7 +360,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="30dp"
-                        android:text="Rp500.000"
+                        android:text="Rp750.000"
                         android:textColor="@color/black"
                         android:textSize="14dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -372,7 +374,7 @@
                         android:id="@+id/id_tv_item_summary_type_ticket_vvip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1x VVIP"
+                        android:text="VVIP"
                         android:textColor="@color/black"
                         android:textSize="14dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -394,11 +396,12 @@
                 android:src="@drawable/ic_btn_minus" />
 
             <TextView
+                android:id="@+id/id_tv_summary_count_number_vvip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
-                android:text="1"
+                android:text="0"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
