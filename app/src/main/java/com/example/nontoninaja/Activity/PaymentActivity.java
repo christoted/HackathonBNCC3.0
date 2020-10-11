@@ -29,13 +29,15 @@ public class PaymentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
-        
+        firebaseAuth = FirebaseAuth.getInstance();
 
+        Log.d("Nama", firebaseAuth.getCurrentUser().getDisplayName());
+        
         cardReguler = findViewById(R.id.cardView4);
         cardVip = findViewById(R.id.cardView5);
         cardVvip = findViewById(R.id.cardView6);
 
-        priceReguler = findViewById(R.id.id_txtView_activity_payment_Regular);
+        priceReguler = findViewById(R.id.id_txtView_activity_payment_regPrice);
         priceVip = findViewById(R.id.id_txtView_activity_payment_VIPPrice);
         priceVvip = findViewById(R.id.id_txtView_activity_payment_VVIPPrice);
         tvtotalPrice = findViewById(R.id.id_txtView_activity_payment_totalPAY);
@@ -54,7 +56,7 @@ public class PaymentActivity extends AppCompatActivity {
         Intent intent = getIntent();
         myTicketWithQty = intent.getParcelableExtra("myTicketWithQty");
         MyTicket ticket = myTicketWithQty.getTicket();
-        Log.d("122",myTicketWithQty.getCountReguler()+"");
+        Log.d("122",myTicketWithQty.getCountVip()+"");
 
         eventTitle.setText(ticket.getTxtTitle());
         eventTime.setText(ticket.getTxtTime());
@@ -70,6 +72,7 @@ public class PaymentActivity extends AppCompatActivity {
             qtyReguler.setText(myTicketWithQty.getCountReguler()+"x");
             priceReguler.setText(NumberFormat.getNumberInstance(Locale.FRANCE).format(new Double(myTicketWithQty.getCountReguler()*500000)));
         }
+
         if(myTicketWithQty.getCountVip() ==0)
         {
             cardVip.setVisibility(View.GONE);
@@ -79,6 +82,7 @@ public class PaymentActivity extends AppCompatActivity {
             qtyVip.setText(myTicketWithQty.getCountVip()+"x");
             priceVip.setText(NumberFormat.getNumberInstance(Locale.FRANCE).format(new Double(myTicketWithQty.getCountVip()*600000)));
         }
+
         if (myTicketWithQty.getCountVvip() == 0 )
         {
             cardVvip.setVisibility(View.GONE);
@@ -88,7 +92,7 @@ public class PaymentActivity extends AppCompatActivity {
             qtyVvip.setText(myTicketWithQty.getCountVvip()+"x");
             priceVvip.setText(NumberFormat.getNumberInstance(Locale.FRANCE).format(new Double(myTicketWithQty.getCountVvip()*750000)));
         }
-         Double totalPrice = new Double(intent.getIntExtra("totalPrice",0));
+        Double totalPrice = new Double(intent.getIntExtra("totalPrice",0));
         tvtotalPrice.setText("Rp "+ NumberFormat.getNumberInstance(Locale.FRANCE).format(totalPrice));
 
     }
