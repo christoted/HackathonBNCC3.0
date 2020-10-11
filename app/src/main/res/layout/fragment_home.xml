@@ -48,6 +48,7 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="297dp"
                             android:layout_height="84dp"
+                            android:id="@+id/id_constrainLayout_profile"
                             android:background="@color/orange"
                             android:padding="10dp">
 
