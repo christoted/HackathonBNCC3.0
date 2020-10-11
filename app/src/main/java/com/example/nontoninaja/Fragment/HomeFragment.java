@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.Adapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import android.widget.ImageButton;
@@ -26,6 +27,7 @@ import android.widget.Toast;
 import com.example.nontoninaja.Activity.LoginActivity;
 import com.example.nontoninaja.Activity.MainActivity;
 import com.example.nontoninaja.Activity.ProfileDetailActivity;
+import com.example.nontoninaja.Activity.TopUpActivity;
 import com.example.nontoninaja.Adapter.AdapterMyTicket;
 import com.example.nontoninaja.Adapter.AdapterRecommendForYou;
 import com.example.nontoninaja.Database.CloudFireStore;
@@ -72,13 +74,15 @@ public class HomeFragment extends Fragment {
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
     String profileGoogle, emailGoogle;
+
+    Button id_btn_fragment_home_topUp;
     private void initView(View view)  {
         recyclerView = view.findViewById(R.id.id_rv_fragment_home_yourConcert);
         recyclerView2 = view.findViewById(R.id.id_rv_fragment_home_comingSoon);
         txtShowAll = view.findViewById(R.id.id_btn_fragment_home_showAll);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-
+        id_btn_fragment_home_topUp = view.findViewById(R.id.id_btn_fragment_home_topUp);
         imageButton = view.findViewById(R.id.id_imgBtn_fragment_home_profilePicture);
         txtUser = view.findViewById(R.id.id_tv_fragment_home_username);
         txtSaldo = view.findViewById(R.id.id_tv_fragment_home_saldo);
@@ -129,6 +133,14 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), ShowAllTicketsActivity.class);
                 intent.putParcelableArrayListExtra("listTickets",ticketArrayLists);
+                startActivity(intent);
+            }
+        });
+
+        id_btn_fragment_home_topUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), TopUpActivity.class);
                 startActivity(intent);
             }
         });
