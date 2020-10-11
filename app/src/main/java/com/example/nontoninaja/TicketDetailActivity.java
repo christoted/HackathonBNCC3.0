@@ -7,14 +7,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.nontoninaja.Model.MyTicket;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class TicketDetailActivity extends AppCompatActivity {
 
@@ -27,16 +32,9 @@ public class TicketDetailActivity extends AppCompatActivity {
     TextView id_tv_TicketDetail_eventDesc;
     TextView id_tv_TicketDetail_eventLocation;
 
-    TextView id_tv_TicketDetail_ticketQty;
     Button id_btn_TicketDetail_addTicket;
-    Button id_btn_TicketDetail_plusQty;
-    Button id_btn_TicketDetail_minusQty;
-    RecyclerView id_rv_TicketDetail_rvItems;
+    Button id_btn_TicketDetail_btnBack;
     final FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
-
-    String eventName,eventCategory,eventDesc,eventLocation,eventPrice,eventDate,eventTime;
-    int eventImgFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,51 +47,57 @@ public class TicketDetailActivity extends AppCompatActivity {
 
     private void initItems(Intent intent) {
 
-        id_imgView_TicketDetail_eventImg.findViewById(R.id.id_img_TicketDetail_eventImage);
-        id_tv_TicketDetail_eventName.findViewById(R.id.id_txtView_TicketDetail_eventName);
-        id_tv_TicketDetail_eventCategory.findViewById(R.id.id_txtView_TicketDetail_ticketCategory);
-        id_tv_TicketDetail_eventDesc.findViewById(R.id.id_txtView_TicketDetail_eventDescription);
-        id_tv_TicketDetail_eventLocation.findViewById(R.id.id_txtView_TicketDetail_eventLocation);
-        id_tv_TicketDetail_eventPrice.findViewById(R.id.id_txtView_TicketDetail_eventPrice);
-        id_btn_TicketDetail_addTicket.findViewById(R.id.id_btn_TicketDetail_btnBuy);
-        id_tv_TicketDetail_eventDate.findViewById(R.id.id_txtView_TicketDetail_eventDate);
-        id_tv_TicketDetail_eventTime.findViewById(R.id.id_txtView_TicketDetail_eventTime);
-        id_rv_TicketDetail_rvItems.findViewById(R.id.id_rv_TicketDetail_rvItems);
+        id_imgView_TicketDetail_eventImg = findViewById(R.id.id_img_TicketDetail_eventImage);
+        id_tv_TicketDetail_eventName = findViewById(R.id.id_txtView_TicketDetail_eventName);
+        id_tv_TicketDetail_eventCategory = findViewById(R.id.id_txtView_TicketDetail_ticketCategory);
+        id_tv_TicketDetail_eventDesc = findViewById(R.id.id_txtView_TicketDetail_eventDescription);
+        id_tv_TicketDetail_eventLocation = findViewById(R.id.id_txtView_TicketDetail_eventLocation);
+        id_tv_TicketDetail_eventPrice = findViewById(R.id.id_txtView_TicketDetail_eventPrice);
+        id_btn_TicketDetail_addTicket = findViewById(R.id.id_btn_TicketDetail_btnBuy);
+        id_tv_TicketDetail_eventDate = findViewById(R.id.id_txtView_TicketDetail_eventDate);
+        id_tv_TicketDetail_eventTime = findViewById(R.id.id_txtView_TicketDetail_eventTime);
+        id_btn_TicketDetail_btnBack = findViewById(R.id.id_btn_TicketDetail_btnBack);
 
 
-        eventName = intent.getStringExtra("eventName");
-        eventCategory = intent.getStringExtra("eventCategory");
-        eventDesc = intent.getStringExtra("eventDesc");
-        eventLocation = intent.getStringExtra("eventLocation");
-        eventPrice = intent.getStringExtra("eventPrice");
-        eventImgFile = intent.getIntExtra("eventImg",0);
-        eventDate = intent.getStringExtra("eventDate");
-        eventTime = intent.getStringExtra("eventTime");
-      //  final MyTicket myTicket = new MyTicket(eventName,eventCategory,eventDate,eventTime,eventDesc,eventImgFile,eventLocation);
 
-        id_imgView_TicketDetail_eventImg.setImageResource(eventImgFile);
-        id_tv_TicketDetail_eventName.setText(eventName);
-        id_tv_TicketDetail_eventCategory.setText(eventCategory);
-        id_tv_TicketDetail_eventDesc.setText(eventDesc);
-        id_tv_TicketDetail_eventLocation.setText(eventLocation);
-        id_tv_TicketDetail_eventPrice.setText(eventPrice);
-        id_tv_TicketDetail_eventTime.setText(eventTime);
-        id_tv_TicketDetail_eventDate.setText(eventDate);
 
-//        id_btn_TicketDetail_addTicket.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
+      final MyTicket myTicket = intent.getParcelableExtra("myTicket");
+        Log.d("Tes gambar",""+myTicket.getImgEvent());
+        Glide.with(TicketDetailActivity.this)
+                .load(myTicket.getImgEvent())
+                .into(id_imgView_TicketDetail_eventImg);
+
+        id_tv_TicketDetail_eventName.setText(myTicket.getTxtTitle());
+        id_tv_TicketDetail_eventCategory.setText(myTicket.getTxtCategory());
+        id_tv_TicketDetail_eventDesc.setText(myTicket.getTxtDescription());
+        id_tv_TicketDetail_eventLocation.setText(myTicket.getTxtLocation());
+        id_tv_TicketDetail_eventPrice.setText("Rp "+NumberFormat.getNumberInstance(Locale.FRANCE).format(new Double(myTicket.getTxtPriceReguler()))+" - Rp "+NumberFormat.getNumberInstance(Locale.FRANCE).format(new Double(myTicket.getTxtPriceVVIP())) );
+        id_tv_TicketDetail_eventTime.setText(myTicket.getTxtTime());
+        id_tv_TicketDetail_eventDate.setText(myTicket.getTxtDate());
+
+        id_btn_TicketDetail_btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        id_btn_TicketDetail_addTicket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(TicketDetailActivity.this, TransactionSummary.class);
+                intent1.putExtra("myTicket",myTicket);
+                startActivity(intent1);
 //                if(mAuth.getCurrentUser() != null)
 //                {
 //                    Intent intent1 = new Intent(TicketDetailActivity.this, TransactionSummary.class);
-//                    intent1.putExtra("myTicket", (Parcelable) myTicket);
-//
+//                    intent1.putExtra("myTicket",myTicket);
 //                }else{
 //                    redirectToRegisterLogin();
 //                }
-//            }
-//        });
-        id_rv_TicketDetail_rvItems.setLayoutManager(new LinearLayoutManager(this));
+            }
+        });
+//        id_rv_TicketDetail_rvItems.setLayoutManager(new LinearLayoutManager(this));
         //id_rv_TicketDetail_rvItems.setAdapter(adapter);
 
     }

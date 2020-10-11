@@ -1,6 +1,7 @@
 package com.example.nontoninaja.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,11 +13,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.nontoninaja.Adapter.AdapterMyTicket;
 import com.example.nontoninaja.Database.CloudFireStore;
 import com.example.nontoninaja.Model.MyTicket;
 import com.example.nontoninaja.R;
+import com.example.nontoninaja.ShowAllTicketsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -37,8 +40,11 @@ public class HomeFragment extends Fragment {
     RecyclerView recyclerView;
     AdapterMyTicket adapterMyTicket;
     ArrayList<MyTicket> ticketArrayLists;
+    TextView txtShowAll;
     private void initView(View view)  {
         recyclerView = view.findViewById(R.id.id_rv_fragment_home_yourConcert);
+        txtShowAll = view.findViewById(R.id.id_btn_fragment_home_showAll);
+
     }
 
     @Override
@@ -48,6 +54,15 @@ public class HomeFragment extends Fragment {
        initView(view);
 
        initializeView();
+
+        txtShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ShowAllTicketsActivity.class);
+                intent.putParcelableArrayListExtra("listTickets",ticketArrayLists);
+                startActivity(intent);
+            }
+        });
 
      //  db.readConcert(getActivity());
 

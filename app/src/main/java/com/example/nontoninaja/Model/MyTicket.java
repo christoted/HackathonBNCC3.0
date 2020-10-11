@@ -1,6 +1,9 @@
 package com.example.nontoninaja.Model;
 
-public class MyTicket {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class MyTicket implements Parcelable {
     public MyTicket() {
 
     }
@@ -107,7 +110,7 @@ public class MyTicket {
     private String txtLocation;
     private String imgEvent;
 
-    public MyTicket(String txtTitle, String txtCategory, String txtDate, String txtTime, String txtDescription,String imgEvent,String txtLocation,String txtPrice) {
+    public MyTicket(String txtTitle, String txtCategory, String txtDate, String txtTime, String txtDescription,String imgEvent,String txtLocation,String txtPriceReguler,String txtPriceVIP, String txtPriceVVIP) {
         this.txtTitle = txtTitle;
         this.txtCategory = txtCategory;
         this.txtDate = txtDate;
@@ -115,6 +118,54 @@ public class MyTicket {
         this.txtDescription = txtDescription;
         this.imgEvent = imgEvent;
         this.txtLocation = txtLocation;
-        this.txtPriceReguler = txtPrice;
+        this.txtPriceReguler = txtPriceReguler;
+        this.txtPriceVIP = txtPriceVIP;
+        this.txtPriceVVIP = txtPriceVVIP;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(txtTitle);
+        parcel.writeString(txtCategory);
+        parcel.writeString(txtDate);
+        parcel.writeString(txtTime);
+        parcel.writeString(txtDescription);
+        parcel.writeString(imgEvent);
+        parcel.writeString(txtLocation);
+        parcel.writeString(txtPriceReguler);
+        parcel.writeString(txtPriceVIP);
+        parcel.writeString(txtPriceVVIP);
+    }
+
+    protected MyTicket(Parcel in) {
+        this.txtTitle = in.readString();
+        this.txtCategory = in.readString();
+        this.txtDate = in.readString();
+        this.txtTime = in.readString();
+        this.txtDescription = in.readString();
+        this.imgEvent = in.readString();
+        this.txtLocation = in.readString();
+        this.txtPriceReguler = in.readString();
+        this.txtPriceVIP = in.readString();
+        this.txtPriceVVIP = in.readString();
+    }
+
+    public static final Parcelable.Creator<MyTicket> CREATOR = new Parcelable.Creator<MyTicket>()
+    {
+
+        @Override
+        public MyTicket createFromParcel(Parcel parcel) {
+            return new MyTicket(parcel);
+        }
+
+        @Override
+        public MyTicket[] newArray(int i) {
+            return new MyTicket[i];
+        }
+    };
 }

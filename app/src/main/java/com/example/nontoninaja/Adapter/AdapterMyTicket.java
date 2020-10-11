@@ -1,6 +1,7 @@
 package com.example.nontoninaja.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.nontoninaja.Model.MyTicket;
 import com.example.nontoninaja.R;
+import com.example.nontoninaja.ShowAllTicketsActivity;
+import com.example.nontoninaja.TicketDetailActivity;
 
 import java.util.ArrayList;
 
@@ -48,6 +51,8 @@ public class AdapterMyTicket extends RecyclerView.Adapter<AdapterMyTicket.MyView
         Glide.with(mContext)
                 .load(myTicket.getImgEvent())
                 .into(holder.imgView_content);
+
+
     }
 
     @Override
@@ -61,7 +66,7 @@ public class AdapterMyTicket extends RecyclerView.Adapter<AdapterMyTicket.MyView
         TextView tv_title, tv_content, tv_calendar, tv_time, tv_category,tv_location;
 
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull final View itemView) {
             super(itemView);
 
             imgView_content = itemView.findViewById(R.id.id_iv_home_imageContent);
@@ -70,6 +75,15 @@ public class AdapterMyTicket extends RecyclerView.Adapter<AdapterMyTicket.MyView
             tv_time = itemView.findViewById(R.id.id_tv_item_home_concert_time);
             tv_location = itemView.findViewById(R.id.id_tv_item_home_location);
             tv_calendar = itemView.findViewById(R.id.id_tv_item_home_concert_calendar);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(itemView.getContext(), TicketDetailActivity.class);
+                    intent.putExtra("myTicket",myTicketArrayList.get(getLayoutPosition()));
+                    mContext.startActivity(intent);
+                }
+            });
 
         }
     }

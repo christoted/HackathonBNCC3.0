@@ -7,12 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.nontoninaja.Model.MyTicket;
 import com.example.nontoninaja.R;
 import com.example.nontoninaja.TicketDetailActivity;
@@ -45,9 +47,14 @@ public class AdapterShowAll extends RecyclerView.Adapter<AdapterShowAll.MyViewHo
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mcontext, TicketDetailActivity.class);
-                intent.putExtra("myTicket", (Parcelable) myTicket);
+                intent.putExtra("myTicket",myTicket);
+                mcontext.startActivity(intent);
             }
         });
+
+        Glide.with(mcontext)
+                .load(myTicket.getImgEvent())
+                .into(holder.imgEvent);
     }
 
     @Override
@@ -59,11 +66,13 @@ public class AdapterShowAll extends RecyclerView.Adapter<AdapterShowAll.MyViewHo
         TextView tvEventName;
         TextView tvEventDate;
         Button btnSeeDetails;
+        ImageView imgEvent;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             tvEventName = itemView.findViewById(R.id.id_tv_ShowAllItem_eventName);
             tvEventDate = itemView.findViewById(R.id.id_tv_ShowAllItem_eventDate);
             btnSeeDetails = itemView.findViewById(R.id.id_btn_ShowAllItem_btnSeeDetails);
+            imgEvent = itemView.findViewById(R.id.id_img_ShowAllItem_eventImg);
         }
     }
 }
