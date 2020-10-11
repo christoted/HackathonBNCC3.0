@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,9 +15,15 @@ import android.widget.Toast;
 
 import com.example.nontoninaja.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -24,6 +31,8 @@ public class RegisterActivity extends AppCompatActivity {
     Button btnRegister;
     TextView tvLogin;
     FirebaseAuth firebaseAuth;
+    FirebaseFirestore firebaseFirestore;
+    String userID,username,phonenumber,email,password,saldo,address;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +48,6 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username,phonenumber,email,password;
                 String validateEmail = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
                 username = etUsername.getText().toString().trim();
                 phonenumber = etPhoneNumber.getText().toString().trim();
@@ -111,15 +119,31 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.id_btn_activityregister_register);
         tvLogin = findViewById(R.id.id_tv_activityregister_login);
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
-    public void registerFirebase(String email, String password){
+    public void registerFirebase(final String email, String password){
         firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isComplete()){
                     Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
+                    userID = firebaseAuth.getCurrentUser().getUid();
+                    DocumentReference documentReference = firebaseFirestore.collection("users").document(userID);
+                    Map<String, Object> user = new HashMap<>();
+                    user.put("name",username);
+                    user.put("email",email);
+                    user.put("phone",phonenumber);
+                    user.put("saldo",saldo);
+                    user.put("address",address);
+                    documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d("Firebase Firestore", "onSuccess: User profile is created " + userID);
+                        }
+                    });
                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    finish();
                 }else{
                     Toast.makeText(RegisterActivity.this, "Error", Toast.LENGTH_SHORT).show();
                 }
