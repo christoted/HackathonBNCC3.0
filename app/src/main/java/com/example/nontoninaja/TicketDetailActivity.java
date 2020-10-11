@@ -35,9 +35,6 @@ public class TicketDetailActivity extends AppCompatActivity {
     final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
 
-    String eventName,eventCategory,eventDesc,eventLocation,eventPrice,eventDate,eventTime;
-    int eventImgFile;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,24 +58,17 @@ public class TicketDetailActivity extends AppCompatActivity {
         id_rv_TicketDetail_rvItems.findViewById(R.id.id_rv_TicketDetail_rvItems);
 
 
-        eventName = intent.getStringExtra("eventName");
-        eventCategory = intent.getStringExtra("eventCategory");
-        eventDesc = intent.getStringExtra("eventDesc");
-        eventLocation = intent.getStringExtra("eventLocation");
-        eventPrice = intent.getStringExtra("eventPrice");
-        eventImgFile = intent.getIntExtra("eventImg",0);
-        eventDate = intent.getStringExtra("eventDate");
-        eventTime = intent.getStringExtra("eventTime");
-        final MyTicket myTicket = new MyTicket(eventName,eventCategory,eventDate,eventTime,eventDesc,eventImgFile,eventLocation);
 
-        id_imgView_TicketDetail_eventImg.setImageResource(eventImgFile);
-        id_tv_TicketDetail_eventName.setText(eventName);
-        id_tv_TicketDetail_eventCategory.setText(eventCategory);
-        id_tv_TicketDetail_eventDesc.setText(eventDesc);
-        id_tv_TicketDetail_eventLocation.setText(eventLocation);
-        id_tv_TicketDetail_eventPrice.setText(eventPrice);
-        id_tv_TicketDetail_eventTime.setText(eventTime);
-        id_tv_TicketDetail_eventDate.setText(eventDate);
+        final MyTicket myTicket = intent.getParcelableExtra("myTicket");
+
+        id_imgView_TicketDetail_eventImg.setImageResource(myTicket.getImgEvent());
+        id_tv_TicketDetail_eventName.setText(myTicket.getTxtTitle());
+        id_tv_TicketDetail_eventCategory.setText(myTicket.getTxtCategory());
+        id_tv_TicketDetail_eventDesc.setText(myTicket.getTxtDescription());
+        id_tv_TicketDetail_eventLocation.setText(myTicket.getTxtLocation());
+        id_tv_TicketDetail_eventPrice.setText(myTicket.getTxtPrice());
+        id_tv_TicketDetail_eventTime.setText(myTicket.getTxtTime());
+        id_tv_TicketDetail_eventDate.setText(myTicket.getTxtDate());
 
         id_btn_TicketDetail_addTicket.setOnClickListener(new View.OnClickListener() {
             @Override

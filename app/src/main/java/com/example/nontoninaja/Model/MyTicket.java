@@ -55,6 +55,16 @@ public class MyTicket {
     private String txtTime;
     private String txtDescription;
 
+    public String getTxtPrice() {
+        return txtPrice;
+    }
+
+    public void setTxtPrice(String txtPrice) {
+        this.txtPrice = txtPrice;
+    }
+
+    private String txtPrice;
+
     public String getTxtLocation() {
         return txtLocation;
     }
@@ -66,7 +76,7 @@ public class MyTicket {
     private String txtLocation;
     private int imgEvent;
 
-    public MyTicket(String txtTitle, String txtCategory, String txtDate, String txtTime, String txtDescription,int imgEvent,String txtLocation) {
+    public MyTicket(String txtTitle, String txtCategory, String txtDate, String txtTime, String txtDescription,int imgEvent,String txtLocation,String txtPrice) {
         this.txtTitle = txtTitle;
         this.txtCategory = txtCategory;
         this.txtDate = txtDate;
@@ -74,5 +84,6 @@ public class MyTicket {
         this.txtDescription = txtDescription;
         this.imgEvent = imgEvent;
         this.txtLocation = txtLocation;
+        this.txtPrice = txtPrice;
     }
 }
