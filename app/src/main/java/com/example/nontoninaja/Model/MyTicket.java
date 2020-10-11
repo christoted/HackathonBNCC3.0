@@ -4,7 +4,7 @@ public class MyTicket {
     private String txtTitle,txtContent,txtDate,txtTime,txtType;
     private int imgContent, imgDate, imgTime, imgType;
 
-    public MyTicket(String txtTitle, String txtContent, String txtDate, String txtTime, String txtType, int imgContent, int imgDate, int imgTime, int imgType) {
+        public MyTicket(String txtTitle, String txtContent, String txtDate, String txtTime, String txtType, int imgContent, int imgDate, int imgTime, int imgType) {
         this.txtTitle = txtTitle;
         this.txtContent = txtContent;
         this.txtDate = txtDate;
@@ -14,6 +14,10 @@ public class MyTicket {
         this.imgDate = imgDate;
         this.imgTime = imgTime;
         this.imgType = imgType;
+    }
+
+    public MyTicket() {
+
     }
 
     public String getTxtTitle() {
