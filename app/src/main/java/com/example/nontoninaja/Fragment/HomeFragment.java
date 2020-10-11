@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -36,7 +37,7 @@ import static com.example.nontoninaja.Database.CloudFireStore.ticketArrayList;
 
 public class HomeFragment extends Fragment {
 
-    CloudFireStore db = new CloudFireStore();
+    FirebaseFirestore db;
     RecyclerView recyclerView;
     AdapterMyTicket adapterMyTicket;
     ArrayList<MyTicket> ticketArrayLists;
@@ -74,7 +75,11 @@ public class HomeFragment extends Fragment {
 
     public void initializeView()   {
         ticketArrayLists = new ArrayList<>();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
+//        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+//                .setTimestampsInSnapshotsEnabled(true)
+//                .build();
+//        db.setFirestoreSettings(settings);
         CollectionReference concertsCollectionRef = db.collection("concerts");
 
             Query concertsQuery = concertsCollectionRef;
@@ -88,21 +93,25 @@ public class HomeFragment extends Fragment {
 //                                ticketArrayList.clear();
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                     MyTicket myTicket = document.toObject(MyTicket.class);
+
                                     myTicket.setTxtTitle(document.getData().get("title").toString());
                                     myTicket.setTxtTime(document.getData().get("time").toString());
                                     myTicket.setTxtLocation(document.getData().get("location").toString());
                                     myTicket.setTxtPriceReguler(document.getData().get("priceReguler").toString());
                                     myTicket.setTxtPriceVIP(document.getData().get("priceVIP").toString());
                                     myTicket.setTxtPriceVVIP(document.getData().get("priceVVIP").toString());
-//                                    myTicket.setLikes(document.getData().get("likes").toString());
+                                    myTicket.setLikes(document.getData().get("likes").toString());
 //                                    Log.d("12345", "onComplete: Likes" + document.getData().get("likes").toString());
                                     myTicket.setTxtDate(document.getData().get("date").toString());
                                     myTicket.setImgEvent(document.getData().get("image").toString());
                                     myTicket.setTxtCategory(document.getData().get("category").toString());
 
+                                    myTicket.setTxtDescription(document.getData().get("description").toString());
+
+
 
                                     ticketArrayLists.add(myTicket);
-                                    Log.d("555", "onComplete: ini Home Fragment" + ticketArrayLists.size());
+//                                    Log.d("555", "onComplete: ini Home Fragment" + myTicket.getTxtTitle() + "likes : "+myTicket.getLikes());
                                 }
                                 adapterMyTicket = new AdapterMyTicket(getActivity(), ticketArrayLists);
                                 recyclerView.setAdapter(adapterMyTicket);
