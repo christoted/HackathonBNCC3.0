@@ -31,6 +31,7 @@ public class RegisterActivity extends AppCompatActivity {
         init();
 
         if(firebaseAuth.getCurrentUser() != null){
+            Toast.makeText(RegisterActivity.this, "Account ald loggedin", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
             finish();
         }
@@ -90,17 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                 * */
 
                 //REGISTER USER IN FIREBASE
-                firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isComplete()){
-                            Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        }else{
-                            Toast.makeText(RegisterActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                registerFirebase(email,password);
             }
         });
 
@@ -120,6 +111,20 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.id_btn_activityregister_register);
         tvLogin = findViewById(R.id.id_tv_activityregister_login);
         firebaseAuth = FirebaseAuth.getInstance();
+    }
+
+    public void registerFirebase(String email, String password){
+        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isComplete()){
+                    Toast.makeText(RegisterActivity.this, "User Created", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                }else{
+                    Toast.makeText(RegisterActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 }
