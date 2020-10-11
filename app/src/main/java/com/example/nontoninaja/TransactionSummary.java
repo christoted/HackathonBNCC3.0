@@ -5,12 +5,18 @@ import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nontoninaja.Activity.PaymentActivity;
 import com.example.nontoninaja.Model.MyTicket;
+import com.example.nontoninaja.Model.MyTicketWithQty;
+
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class TransactionSummary extends AppCompatActivity implements View.OnClickListener {
 
@@ -110,7 +116,7 @@ public class TransactionSummary extends AppCompatActivity implements View.OnClic
         countReg++;
         tvNumberReg.setText(countReg +"");
         countTotal+=500000;
-        id_txtView_TransactionSummary_adminFee.setText(countTotal+"");
+        updateTextViewTotal();
     }
 
     void minusRegulerNumber() {
@@ -118,10 +124,10 @@ public class TransactionSummary extends AppCompatActivity implements View.OnClic
             countReg--;
             tvNumberReg.setText(countReg +"");
             if ( countTotal == 0) {
-                id_txtView_TransactionSummary_adminFee.setText("");
+                updateTextViewTotal();
             } else {
                 countTotal-=500000;
-                id_txtView_TransactionSummary_adminFee.setText(countTotal+"");
+                updateTextViewTotal();
             }
         }
     }
@@ -130,7 +136,7 @@ public class TransactionSummary extends AppCompatActivity implements View.OnClic
         countVIP++;
         tvNumberVIP.setText(countVIP+"");
         countTotal+=600000;
-        id_txtView_TransactionSummary_adminFee.setText(countTotal+"");
+        updateTextViewTotal();
     }
 
     void minusVIPNumber(){
@@ -138,10 +144,10 @@ public class TransactionSummary extends AppCompatActivity implements View.OnClic
             countVIP--;
             tvNumberVIP.setText(countVIP+"");
             if ( countTotal == 0) {
-                id_txtView_TransactionSummary_adminFee.setText("");
+                updateTextViewTotal();
             } else {
                 countTotal-=600000;
-                id_txtView_TransactionSummary_adminFee.setText(countTotal+"");
+                updateTextViewTotal();
             }
         }
     }
@@ -150,7 +156,7 @@ public class TransactionSummary extends AppCompatActivity implements View.OnClic
         countVVIP++;
         tvNumberVVIP.setText(countVVIP+"");
         countTotal+=750000;
-        id_txtView_TransactionSummary_adminFee.setText(countTotal+"");
+        updateTextViewTotal();
     }
 
     void minusVVIPNumber(){
@@ -158,12 +164,24 @@ public class TransactionSummary extends AppCompatActivity implements View.OnClic
             countVVIP--;
             tvNumberVVIP.setText(countVVIP+"");
             if ( countTotal == 0) {
-                id_txtView_TransactionSummary_adminFee.setText("");
+                updateTextViewTotal();
             } else {
                 countTotal-=750000;
-                id_txtView_TransactionSummary_adminFee.setText(countTotal+"");
+                updateTextViewTotal();
             }
 
+        }
+    }
+    private void updateTextViewTotal()
+    {
+        if(countTotal ==0)
+        {
+            id_txtView_TransactionSummary_adminFee.setText("");
+        }
+        else
+        {
+
+            id_txtView_TransactionSummary_adminFee.setText("Rp "+NumberFormat.getNumberInstance(Locale.FRANCE).format(countTotal));
         }
     }
 
@@ -175,10 +193,10 @@ public class TransactionSummary extends AppCompatActivity implements View.OnClic
         } else if ( view == btnPlusReg) {
             plusRegulerNumber();
         } else if ( view == btnMinusVIP) {
-            Toast.makeText(this, "BEBEk", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "BEBEk", Toast.LENGTH_SHORT).show();
             minusVIPNumber();
         } else if ( view == btnPlusVIP) {
-            Toast.makeText(this, "BEBEk", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "BEBEk", Toast.LENGTH_SHORT).show();
             plusVIPNumber();
         } else if ( view == btnMinusVVIP) {
             minusVVIPNumber();
@@ -187,7 +205,21 @@ public class TransactionSummary extends AppCompatActivity implements View.OnClic
         }
 
         if ( view == id_btn_TransactionSummary_btnOrder) {
-            Toast.makeText(this, "Order Success!", Toast.LENGTH_SHORT).show();
+            if( countReg+countVIP+countVVIP > 0) {
+                Toast.makeText(this, "Order Success!", Toast.LENGTH_SHORT).show();
+
+                MyTicketWithQty myTicketWithQty = new MyTicketWithQty(myTicket, countReg, countVIP, countVVIP);
+                Log.d("120",countReg+"");
+                Intent intent = new Intent(TransactionSummary.this, PaymentActivity.class);
+                intent.putExtra("totalPrice",countTotal);
+                intent.putExtra("myTicketWithQty", myTicketWithQty);
+                startActivity(intent);
+            }
+            else
+            {
+                Toast.makeText(this, "Please add your ticket quantity", Toast.LENGTH_SHORT).show();
+            }
         }
+
     }
 }
