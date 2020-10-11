@@ -140,6 +140,7 @@ public class MyTicket implements Parcelable {
         parcel.writeString(txtPriceReguler);
         parcel.writeString(txtPriceVIP);
         parcel.writeString(txtPriceVVIP);
+        parcel.writeString(likes);
     }
 
     protected MyTicket(Parcel in) {
@@ -153,6 +154,8 @@ public class MyTicket implements Parcelable {
         this.txtPriceReguler = in.readString();
         this.txtPriceVIP = in.readString();
         this.txtPriceVVIP = in.readString();
+        this.likes = in.readString();
+
     }
 
     public static final Parcelable.Creator<MyTicket> CREATOR = new Parcelable.Creator<MyTicket>()
