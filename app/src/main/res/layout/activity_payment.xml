@@ -67,6 +67,7 @@
                             app:layout_constraintVertical_bias="0.0">
 
                             <EditText
+                                android:id="@+id/id_activity_payment_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="45dp"
                                 android:background="@drawable/bg_edittext"
@@ -74,6 +75,7 @@
                                 android:paddingStart="20dp" />
 
                             <EditText
+                                android:id="@+id/id_activity_payment_number"
                                 android:layout_width="match_parent"
                                 android:layout_height="45dp"
                                 android:layout_marginTop="10dp"
@@ -82,6 +84,7 @@
                                 android:paddingStart="20dp" />
 
                             <EditText
+                                android:id="@+id/id_activity_payment_email"
                                 android:layout_width="match_parent"
                                 android:layout_height="45dp"
                                 android:layout_marginTop="10dp"
@@ -90,6 +93,7 @@
                                 android:paddingStart="20dp" />
 
                             <EditText
+                                android:id="@+id/id_activity_payment_address"
                                 android:layout_width="match_parent"
                                 android:layout_height="95dp"
                                 android:layout_marginTop="10dp"
@@ -396,6 +400,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:id="@+id/cardView6"
                             android:layout_marginBottom="20dp"
                             app:cardCornerRadius="12dp"
                             app:layout_constraintBottom_toBottomOf="parent"
