@@ -2,4 +2,5 @@
     <string name="app_name">NontoninAja</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="checkbox">Buy for myself</string>
 </resources>

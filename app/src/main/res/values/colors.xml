@@ -11,4 +11,6 @@
     <color name="darkorange">#CB7727</color>
     <color name="black">#000000</color>
     <color name="lightblack">#3B3B3B</color>
+    <color name="darkgrey">#616161</color>
+    <color name="red">#F94343</color>
 </resources>
