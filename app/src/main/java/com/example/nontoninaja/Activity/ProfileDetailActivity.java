@@ -142,7 +142,6 @@ public class ProfileDetailActivity extends AppCompatActivity {
         profilePhoneNumber = findViewById(R.id.id_activityProfileDetail_phoneNumber);
         profileAddress = findViewById(R.id.id_activityProfileDetail_address);
         btnSave = findViewById(R.id.id_btn_activityProfileDetail_save);
-        btnUpdate = findViewById(R.id.id_btn_activityProfileDetail_update);
         btnLogout = findViewById(R.id.id_btn_activityProfileDetail_logout);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();

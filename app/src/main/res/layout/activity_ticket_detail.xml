@@ -25,11 +25,12 @@
         <ImageView
             android:id="@+id/id_img_TicketDetail_eventImage"
             android:layout_width="match_parent"
-            android:layout_height="290dp"
+            android:layout_height="490dp"
             android:background="@color/orange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="fitXY"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
