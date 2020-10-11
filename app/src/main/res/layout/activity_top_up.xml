@@ -52,6 +52,7 @@
                 android:textStyle="bold" />
 
             <EditText
+                android:id="@+id/id_topUp_activity_enterAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -129,6 +130,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/id_activity_topUp_btn_processed"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginStart="16dp"
