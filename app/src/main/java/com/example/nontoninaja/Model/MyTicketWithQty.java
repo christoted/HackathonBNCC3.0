@@ -44,8 +44,9 @@ public class MyTicketWithQty implements Parcelable {
     protected MyTicketWithQty(Parcel in) {
         this.ticket = in.readParcelable(MyTicket.class.getClassLoader());
         this.countReguler = in.readInt();
-        this.countVvip = in.readInt();
         this.countVip = in.readInt();
+        this.countVvip = in.readInt();
+
 
     }
 
