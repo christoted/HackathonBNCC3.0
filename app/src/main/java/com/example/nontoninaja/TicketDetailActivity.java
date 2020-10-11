@@ -18,6 +18,9 @@ import com.bumptech.glide.Glide;
 import com.example.nontoninaja.Model.MyTicket;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class TicketDetailActivity extends AppCompatActivity {
 
     ImageView id_imgView_TicketDetail_eventImg;
@@ -68,7 +71,7 @@ public class TicketDetailActivity extends AppCompatActivity {
         id_tv_TicketDetail_eventCategory.setText(myTicket.getTxtCategory());
         id_tv_TicketDetail_eventDesc.setText(myTicket.getTxtDescription());
         id_tv_TicketDetail_eventLocation.setText(myTicket.getTxtLocation());
-        id_tv_TicketDetail_eventPrice.setText("Rp "+myTicket.getTxtPriceReguler()+" - Rp "+myTicket.getTxtPriceVVIP() );
+        id_tv_TicketDetail_eventPrice.setText("Rp "+NumberFormat.getNumberInstance(Locale.FRANCE).format(new Double(myTicket.getTxtPriceReguler()))+" - Rp "+NumberFormat.getNumberInstance(Locale.FRANCE).format(new Double(myTicket.getTxtPriceVVIP())) );
         id_tv_TicketDetail_eventTime.setText(myTicket.getTxtTime());
         id_tv_TicketDetail_eventDate.setText(myTicket.getTxtDate());
 
