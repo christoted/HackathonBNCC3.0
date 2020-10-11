@@ -1,8 +1,10 @@
-package com.example.nontoninaja;
+package com.example.nontoninaja.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.nontoninaja.R;
 
 public class MyTicketActivity extends AppCompatActivity {
 
