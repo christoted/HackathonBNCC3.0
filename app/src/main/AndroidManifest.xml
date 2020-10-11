@@ -12,9 +12,6 @@
         <activity android:name=".Activity.RegisterActivity">
 
         </activity>
-        <activity android:name=".TicketDetailActivity"></activity>
-        <activity android:name=".TransactionSummary"></activity>
-        <activity android:name=".ShowAllTicketsActivity"></activity>
         <activity android:name=".Activity.LoginActivity">
 
         </activity>

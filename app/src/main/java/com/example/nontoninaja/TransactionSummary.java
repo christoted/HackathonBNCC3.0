@@ -31,14 +31,14 @@ public class TransactionSummary extends AppCompatActivity {
     }
 
     private void initItems() {
-        id_txtView_TransactionSummary_eventName = findViewById(R.id.id_txtView_TransactionSummary_eventName);
-        id_txtView_TransactionSummary_eventCategory = findViewById(R.id.id_txtView_TransactionSummary_eventCategory);
-        id_txtView_TransactionSummary_eventDate = findViewById(R.id.id_txtView_TransactionSummary_eventDate);
-        id_txtView_TransactionSummary_eventTime = findViewById(R.id.id_txtView_TransactionSummary_eventTime);
-        id_txtView_TransactionSummary_eventLocation = findViewById(R.id.id_txtView_TransactionSummary_eventLocation);
-        id_txtView_TransactionSummary_adminFee = findViewById(R.id.id_txtView_TransactionSummary_adminFee);
+        id_txtView_TransactionSummary_eventName.findViewById(R.id.id_txtView_TransactionSummary_eventName);
+        id_txtView_TransactionSummary_eventCategory.findViewById(R.id.id_txtView_TransactionSummary_eventCategory);
+        id_txtView_TransactionSummary_eventDate.findViewById(R.id.id_txtView_TransactionSummary_eventDate);
+        id_txtView_TransactionSummary_eventTime.findViewById(R.id.id_txtView_TransactionSummary_eventTime);
+        id_txtView_TransactionSummary_eventLocation.findViewById(R.id.id_txtView_TransactionSummary_eventLocation);
+        id_txtView_TransactionSummary_adminFee.findViewById(R.id.id_txtView_TransactionSummary_adminFee);
 
-        id_btn_TransactionSummary_btnOrder = findViewById(R.id.id_btn_TransactionSummary_btnOrder);
+        id_btn_TransactionSummary_btnOrder.findViewById(R.id.id_btn_TransactionSummary_btnOrder);
 
 
         Intent intent = getIntent();
