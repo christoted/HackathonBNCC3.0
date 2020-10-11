@@ -11,29 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
         <activity android:name=".TransactionSummary"></activity>
         <activity android:name=".TicketDetailActivity"></activity>
         <activity android:name=".ShowAllTicketsActivity"></activity>
         <activity android:name=".Activity.SummaryActivity"></activity>
         <activity android:name=".Activity.RegisterActivity"></activity>
-        <activity android:name=".Activity.LoginActivity"></activity>
-        <activity android:name=".Activity.MyTicketActivity" />
-        <activity android:name=".Activity.MainActivity">
-=======
         <activity android:name=".Activity.ProfileDetailActivity"></activity>
-        <activity android:name=".Activity.RegisterActivity">
->>>>>>> Profile-Info
+        <activity android:name=".Activity.MyTicketActivity" />
+        <activity android:name=".Activity.PaymentActivity"></activity>
+        <activity android:name=".Activity.MainActivity"></activity>
+
+
+        <activity android:name=".Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".Activity.LoginActivity"></activity>
-        <activity android:name=".Activity.MyTicketActivity" />
-        <activity android:name=".Activity.MainActivity">
-
         </activity>
     </application>
 

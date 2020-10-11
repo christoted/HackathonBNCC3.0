@@ -98,10 +98,7 @@ public class HomeFragment extends Fragment {
     public void initializeView()   {
         ticketArrayLists = new ArrayList<>();
         db = FirebaseFirestore.getInstance();
-//        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-//                .setTimestampsInSnapshotsEnabled(true)
-//                .build();
-//        db.setFirestoreSettings(settings);
+
         CollectionReference concertsCollectionRef = db.collection("concerts");
 
             Query concertsQuery = concertsCollectionRef;
@@ -127,13 +124,14 @@ public class HomeFragment extends Fragment {
                                     myTicket.setTxtDate(document.getData().get("date").toString());
                                     myTicket.setImgEvent(document.getData().get("image").toString());
                                     myTicket.setTxtCategory(document.getData().get("category").toString());
+                                    myTicket.setId(document.getData().get("id").toString());
 
                                     myTicket.setTxtDescription(document.getData().get("description").toString());
 
 
 
                                     ticketArrayLists.add(myTicket);
-//                                    Log.d("555", "onComplete: ini Home Fragment" + myTicket.getTxtTitle() + "likes : "+myTicket.getLikes());
+//                                    Log.d("555", "onComplete: ini Home Fragment" + myTicket.getId());
                                 }
                                 adapterMyTicket = new AdapterMyTicket(getActivity(), ticketArrayLists);
                                 recyclerView.setAdapter(adapterMyTicket);

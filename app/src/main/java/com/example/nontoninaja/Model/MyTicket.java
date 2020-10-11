@@ -67,6 +67,16 @@ public class MyTicket implements Parcelable {
     private String txtPriceVVIP;
     private String likes;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
+
     public String getLikes() {
         return likes;
     }
@@ -141,6 +151,7 @@ public class MyTicket implements Parcelable {
         parcel.writeString(txtPriceVIP);
         parcel.writeString(txtPriceVVIP);
         parcel.writeString(likes);
+        parcel.writeString(id);
     }
 
     protected MyTicket(Parcel in) {
@@ -155,6 +166,7 @@ public class MyTicket implements Parcelable {
         this.txtPriceVIP = in.readString();
         this.txtPriceVVIP = in.readString();
         this.likes = in.readString();
+        this.id = in.readString();
 
     }
 

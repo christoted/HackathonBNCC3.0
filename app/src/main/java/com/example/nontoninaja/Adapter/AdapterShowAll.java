@@ -52,9 +52,9 @@ public class AdapterShowAll extends RecyclerView.Adapter<AdapterShowAll.MyViewHo
             }
         });
 
-//        Glide.with(mcontext)
-//                .load(myTicket.getImgEvent())
-//                .into(holder.imgEvent);
+        Glide.with(mcontext)
+                .load(myTicket.getImgEvent())
+                .into(holder.imgEvent);
     }
 
     @Override
@@ -72,7 +72,7 @@ public class AdapterShowAll extends RecyclerView.Adapter<AdapterShowAll.MyViewHo
             tvEventName = itemView.findViewById(R.id.id_tv_ShowAllItem_eventName);
             tvEventDate = itemView.findViewById(R.id.id_tv_ShowAllItem_eventDate);
             btnSeeDetails = itemView.findViewById(R.id.id_btn_ShowAllItem_btnSeeDetails);
-        //    imgEvent = itemView.findViewById(R.id.id_img_ShowAllItem_eventImg);
+            imgEvent = itemView.findViewById(R.id.id_img_ShowAllItem_eventImg);
         }
     }
 }

@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.nontoninaja.Adapter.AdapterShowAll;
 import com.example.nontoninaja.Model.MyTicket;
@@ -17,6 +19,7 @@ public class ShowAllTicketsActivity extends AppCompatActivity {
     RecyclerView id_rv_ShowAllTickets_rvAllTickets;
     ArrayList<MyTicket> myTicketArrayList;
     AdapterShowAll adapterShowAll;
+    Button btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,5 +31,12 @@ public class ShowAllTicketsActivity extends AppCompatActivity {
         adapterShowAll = new AdapterShowAll(ShowAllTicketsActivity.this,myTicketArrayList);
         id_rv_ShowAllTickets_rvAllTickets.setLayoutManager(new LinearLayoutManager(ShowAllTicketsActivity.this,LinearLayoutManager.HORIZONTAL,false));
         id_rv_ShowAllTickets_rvAllTickets.setAdapter(adapterShowAll);
+        btnBack = findViewById(R.id.id_btn_activity_showAll_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }
