@@ -1,20 +1,13 @@
 package com.example.nontoninaja.Model;
 
-public class MyTicket {
-    private String txtTitle,txtContent,txtDate,txtTime,txtType;
-    private int imgContent, imgDate, imgTime, imgType;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    public MyTicket(String txtTitle, String txtContent, String txtDate, String txtTime, String txtType, int imgContent, int imgDate, int imgTime, int imgType) {
-        this.txtTitle = txtTitle;
-        this.txtContent = txtContent;
-        this.txtDate = txtDate;
-        this.txtTime = txtTime;
-        this.txtType = txtType;
-        this.imgContent = imgContent;
-        this.imgDate = imgDate;
-        this.imgTime = imgTime;
-        this.imgType = imgType;
+public class MyTicket implements Parcelable {
+    public MyTicket() {
+
     }
+
 
     public String getTxtTitle() {
         return txtTitle;
@@ -24,12 +17,12 @@ public class MyTicket {
         this.txtTitle = txtTitle;
     }
 
-    public String getTxtContent() {
-        return txtContent;
+    public String getTxtCategory() {
+        return txtCategory;
     }
 
-    public void setTxtContent(String txtContent) {
-        this.txtContent = txtContent;
+    public void setTxtCategory(String txtCategory) {
+        this.txtCategory = txtCategory;
     }
 
     public String getTxtDate() {
@@ -48,43 +41,146 @@ public class MyTicket {
         this.txtTime = txtTime;
     }
 
-    public String getTxtType() {
-        return txtType;
+    public String getTxtDescription() {
+        return txtDescription;
     }
 
-    public void setTxtType(String txtType) {
-        this.txtType = txtType;
+    public void setTxtDescription(String txtDescription) {
+        this.txtDescription = txtDescription;
     }
 
-    public int getImgContent() {
-        return imgContent;
+    public String getImgEvent() {
+        return imgEvent;
     }
 
-    public void setImgContent(int imgContent) {
-        this.imgContent = imgContent;
+    public void setImgEvent(String imgEvent) {
+        this.imgEvent = imgEvent;
     }
 
-    public int getImgDate() {
-        return imgDate;
+    private String txtTitle;
+    private String txtCategory;
+    private String txtDate;
+    private String txtTime;
+    private String txtDescription;
+    private String txtPriceReguler;
+    private String txtPriceVIP;
+    private String txtPriceVVIP;
+    private String likes;
+
+    public String getId() {
+        return id;
     }
 
-    public void setImgDate(int imgDate) {
-        this.imgDate = imgDate;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public int getImgTime() {
-        return imgTime;
+    private String id;
+
+    public String getLikes() {
+        return likes;
     }
 
-    public void setImgTime(int imgTime) {
-        this.imgTime = imgTime;
+    public void setLikes(String likes) {
+        this.likes = likes;
     }
 
-    public int getImgType() {
-        return imgType;
+    public String getTxtPriceReguler() {
+        return txtPriceReguler;
     }
 
-    public void setImgType(int imgType) {
-        this.imgType = imgType;
+    public void setTxtPriceReguler(String txtPriceReguler) {
+        this.txtPriceReguler = txtPriceReguler;
     }
+
+    public String getTxtPriceVIP() {
+        return txtPriceVIP;
+    }
+
+    public void setTxtPriceVIP(String txtPriceVIP) {
+        this.txtPriceVIP = txtPriceVIP;
+    }
+
+    public String getTxtPriceVVIP() {
+        return txtPriceVVIP;
+    }
+
+    public void setTxtPriceVVIP(String txtPriceVVIP) {
+        this.txtPriceVVIP = txtPriceVVIP;
+    }
+
+    public String getTxtLocation() {
+        return txtLocation;
+    }
+
+    public void setTxtLocation(String txtLocation) {
+        this.txtLocation = txtLocation;
+    }
+
+    private String txtLocation;
+    private String imgEvent;
+
+    public MyTicket(String txtTitle, String txtCategory, String txtDate, String txtTime, String txtDescription,String imgEvent,String txtLocation,String txtPriceReguler,String txtPriceVIP, String txtPriceVVIP) {
+        this.txtTitle = txtTitle;
+        this.txtCategory = txtCategory;
+        this.txtDate = txtDate;
+        this.txtTime = txtTime;
+        this.txtDescription = txtDescription;
+        this.imgEvent = imgEvent;
+        this.txtLocation = txtLocation;
+        this.txtPriceReguler = txtPriceReguler;
+        this.txtPriceVIP = txtPriceVIP;
+        this.txtPriceVVIP = txtPriceVVIP;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(txtTitle);
+        parcel.writeString(txtCategory);
+        parcel.writeString(txtDate);
+        parcel.writeString(txtTime);
+        parcel.writeString(txtDescription);
+        parcel.writeString(imgEvent);
+        parcel.writeString(txtLocation);
+        parcel.writeString(txtPriceReguler);
+        parcel.writeString(txtPriceVIP);
+        parcel.writeString(txtPriceVVIP);
+        parcel.writeString(likes);
+        parcel.writeString(id);
+    }
+
+    protected MyTicket(Parcel in) {
+        this.txtTitle = in.readString();
+        this.txtCategory = in.readString();
+        this.txtDate = in.readString();
+        this.txtTime = in.readString();
+        this.txtDescription = in.readString();
+        this.imgEvent = in.readString();
+        this.txtLocation = in.readString();
+        this.txtPriceReguler = in.readString();
+        this.txtPriceVIP = in.readString();
+        this.txtPriceVVIP = in.readString();
+        this.likes = in.readString();
+        this.id = in.readString();
+
+    }
+
+    public static final Parcelable.Creator<MyTicket> CREATOR = new Parcelable.Creator<MyTicket>()
+    {
+
+        @Override
+        public MyTicket createFromParcel(Parcel parcel) {
+            return new MyTicket(parcel);
+        }
+
+        @Override
+        public MyTicket[] newArray(int i) {
+            return new MyTicket[i];
+        }
+    };
 }

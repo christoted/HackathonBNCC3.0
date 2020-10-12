@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "215755284466",
+    "firebase_url": "https://nontoninaja.firebaseio.com",
+    "project_id": "nontoninaja",
+    "storage_bucket": "nontoninaja.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215755284466:android:0cfa7a3c173424bba8556b",
+        "android_client_info": {
+          "package_name": "com.example.nontoninaja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215755284466-gbc0ui3rk2joqvn37l524r3gm81e2895.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nontoninaja",
+            "certificate_hash": "1a9ae611e1aebacac24cca7195efbb2a745c904f"
+          }
+        },
+        {
+          "client_id": "215755284466-o530jjodtp7r9r2gf3l17t77ai1ha3b4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL8O6_CjAEpSaDm_StlwFrazHxK4uk6Jg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215755284466-o530jjodtp7r9r2gf3l17t77ai1ha3b4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
