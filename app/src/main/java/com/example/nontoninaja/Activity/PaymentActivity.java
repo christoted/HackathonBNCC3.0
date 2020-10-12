@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nontoninaja.Model.MyTicket;
 import com.example.nontoninaja.Model.MyTicketInventory;
@@ -191,6 +192,7 @@ public class PaymentActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent1 = new Intent(PaymentActivity.this,MainActivity.class);
                 MyTicketInventory.myTicketInventory.add(myTicketWithQty);
+                Toast.makeText(getApplicationContext(),"Transaction Success",Toast.LENGTH_SHORT).show();
 //                intent1.putExtra("myTicketInventory",myTicketWithQty);
                 startActivity(intent1);
                 finish();
