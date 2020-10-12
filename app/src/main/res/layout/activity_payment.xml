@@ -137,6 +137,7 @@
                                 app:layout_constraintVertical_bias="0.0" />
 
                             <EditText
+                                android:id="@+id/emailRecipient"
                                 android:layout_width="match_parent"
                                 android:layout_height="45dp"
                                 android:background="@drawable/bg_edittext"
@@ -434,7 +435,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
-                                    android:text="VIP"
+                                    android:text="VVIP"
                                     android:textColor="@color/orange"
                                     android:textStyle="bold"
                                     app:layout_constraintBottom_toBottomOf="parent"
@@ -540,6 +541,7 @@
 
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewPay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -570,19 +572,20 @@
                         android:id="@+id/id_txtView_activity_payment_totalPAY"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
                         android:text="Rp 11.500.000"
-                        android:textStyle="bold"
                         android:textColor="@color/white"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@+id/textView10"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginLeft="10dp"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
                         android:text="PAY"
                         android:textColor="@color/white"
                         android:textStyle="bold"
@@ -590,8 +593,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toEndOf="@+id/id_txtView_activity_payment_totalPAY"
-                        app:layout_constraintTop_toTopOf="parent"
-                        android:layout_marginRight="20dp"/>
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

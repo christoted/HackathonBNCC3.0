@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class TransactionSummary extends AppCompatActivity implements View.OnClic
     TextView id_txtView_TransactionSummary_eventTime;
     TextView id_txtView_TransactionSummary_eventLocation;
     TextView id_txtView_TransactionSummary_adminFee;
+    Button btnBack;
 
 
     CardView id_btn_TransactionSummary_btnOrder;
@@ -76,6 +78,7 @@ public class TransactionSummary extends AppCompatActivity implements View.OnClic
         tvNumberReg = findViewById(R.id.id_tv_summary_count_number_regular);
         tvNumberVIP = findViewById(R.id.id_tv_summary_count_number_vip);
         tvNumberVVIP = findViewById(R.id.id_tv_summary_count_number_vvip);
+        btnBack = findViewById(R.id.id_btn_activity_summary_back);
 
         id_txtView_TransactionSummary_eventName = findViewById(R.id.id_txtView_TransactionSummary_eventName);
         id_txtView_TransactionSummary_eventCategory = findViewById(R.id.id_txtView_TransactionSummary_eventCategory);
@@ -108,6 +111,12 @@ public class TransactionSummary extends AppCompatActivity implements View.OnClic
         id_txtView_TransactionSummary_eventTime.setText(myTicket.getTxtTime());
         id_txtView_TransactionSummary_eventLocation.setText(myTicket.getTxtLocation());
 
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
     }
@@ -206,7 +215,7 @@ public class TransactionSummary extends AppCompatActivity implements View.OnClic
 
         if ( view == id_btn_TransactionSummary_btnOrder) {
             if( countReg+countVIP+countVVIP > 0) {
-                Toast.makeText(this, "Order Success!", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(this, "Order Success!", Toast.LENGTH_SHORT).show();
 
                 MyTicketWithQty myTicketWithQty = new MyTicketWithQty(myTicket, countReg, countVIP, countVVIP);
                 Log.d("120",countReg+"");

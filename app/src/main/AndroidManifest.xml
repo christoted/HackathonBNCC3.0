@@ -16,12 +16,15 @@
         <activity android:name=".TicketDetailActivity"></activity>
         <activity android:name=".ShowAllTicketsActivity"></activity>
         <activity android:name=".Activity.SummaryActivity"></activity>
+        <activity android:name=".Activity.TopUpActivity"></activity>
+        <activity android:name=".Activity.PaymentActivity"></activity>
+        <activity android:name=".activity_myticket_details"></activity>
+        <activity android:name=".ConcertActivity"></activity>
 
 
-=======
         <activity android:name=".Activity.ProfileDetailActivity"></activity>
         <activity android:name=".Activity.RegisterActivity">
->>>>>>> Profile-Info
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -7,10 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.nontoninaja.Model.MyTicket;
+import com.example.nontoninaja.Model.MyTicketInventory;
 import com.example.nontoninaja.Model.MyTicketWithQty;
 import com.example.nontoninaja.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -39,8 +43,12 @@ public class PaymentActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     EditText profileName, profilePhoneNumber, profileEmail, profileAddress;
     String userID, profileGoogle, emailGoogle;
+    CardView cardViewPay;
+    EditText recipientEmail;
+    CheckBox checkBox;
 
     TextView priceReguler,priceVip,priceVvip,qtyReguler,qtyVip,qtyVvip,tvtotalPrice;
+    Button back;
 
     private void getCurrData(){
 
@@ -77,6 +85,10 @@ public class PaymentActivity extends AppCompatActivity {
         profileEmail = findViewById(R.id.id_activity_payment_email);
         profilePhoneNumber = findViewById(R.id.id_activity_payment_number);
         profileAddress = findViewById(R.id.id_activity_payment_address);
+        back = findViewById(R.id.id_btn_activity_payment_back);
+        cardViewPay = findViewById(R.id.cardViewPay);
+        recipientEmail = findViewById(R.id.emailRecipient);
+        checkBox = findViewById(R.id.id_checkBox_activity_payment_buyMyself);
     }
 
     @Override
@@ -114,12 +126,33 @@ public class PaymentActivity extends AppCompatActivity {
         Intent intent = getIntent();
         myTicketWithQty = intent.getParcelableExtra("myTicketWithQty");
         MyTicket ticket = myTicketWithQty.getTicket();
-        Log.d("122",myTicketWithQty.getCountVip()+"");
 
         eventTitle.setText(ticket.getTxtTitle());
         eventTime.setText(ticket.getTxtTime());
         eventDate.setText(ticket.getTxtDate());
         eventCategory.setText(ticket.getTxtCategory());
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        recipientEmail.setVisibility(View.GONE);
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    recipientEmail.setVisibility(View.VISIBLE);
+                }
+                else{
+                    recipientEmail.setVisibility((View.INVISIBLE));
+                    recipientEmail.setVisibility((View.GONE));
+                }
+            }
+        });
+        checkBox = findViewById(R.id.id_checkBox_activity_payment_buyMyself);
+        recipientEmail = findViewById(R.id.emailRecipient);
 
         if(myTicketWithQty.getCountReguler() == 0)
         {
@@ -153,5 +186,17 @@ public class PaymentActivity extends AppCompatActivity {
         Double totalPrice = new Double(intent.getIntExtra("totalPrice",0));
         tvtotalPrice.setText("Rp "+ NumberFormat.getNumberInstance(Locale.FRANCE).format(totalPrice));
 
+        cardViewPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(PaymentActivity.this,MainActivity.class);
+                MyTicketInventory.myTicketInventory.add(myTicketWithQty);
+//                intent1.putExtra("myTicketInventory",myTicketWithQty);
+                startActivity(intent1);
+                finish();
+                finish();
+                finish();
+            }
+        });
     }
 }
