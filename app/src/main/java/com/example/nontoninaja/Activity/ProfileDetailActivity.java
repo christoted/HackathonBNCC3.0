@@ -16,6 +16,7 @@ import com.example.nontoninaja.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -60,6 +61,9 @@ public class ProfileDetailActivity extends AppCompatActivity {
             Log.d("DISPLAYED", "Name: " + profileGoogle);
             Log.d("DISPLAYED", "EMAIL: " + emailGoogle);
         }
+
+        SignInButton signInButton = findViewById(R.id.sign_in_button);
+        signInButton.setSize(SignInButton.SIZE_STANDARD);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
         DocumentReference documentReference = firebaseFirestore.collection("users").document(userID);

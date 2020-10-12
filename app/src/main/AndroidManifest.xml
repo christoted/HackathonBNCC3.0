@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 <!--<<<<<<< HEAD-->
+        <activity android:name=".Activity.PaymentActivity"></activity>
         <activity android:name=".TransactionSummary"></activity>
         <activity android:name=".TicketDetailActivity"></activity>
         <activity android:name=".ShowAllTicketsActivity"></activity>

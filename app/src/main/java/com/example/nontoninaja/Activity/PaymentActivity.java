@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -37,8 +39,9 @@ public class PaymentActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
     DatabaseReference databaseReference;
-    EditText profileName, profilePhoneNumber, profileEmail, profileAddress;
+    EditText profileName, profilePhoneNumber, profileEmail, profileAddress, giftEmail;
     String userID, profileGoogle, emailGoogle;
+    CheckBox cbox;
 
     TextView priceReguler,priceVip,priceVvip,qtyReguler,qtyVip,qtyVvip,tvtotalPrice;
 
@@ -87,7 +90,7 @@ public class PaymentActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         userID = firebaseAuth.getCurrentUser().getUid();
-        Log.d("Nama", firebaseAuth.getCurrentUser().getDisplayName());
+        //Log.d("Nama", firebaseAuth.getCurrentUser().getDisplayName());
         getCurrData();
 
 
@@ -95,10 +98,26 @@ public class PaymentActivity extends AppCompatActivity {
         cardVip = findViewById(R.id.cardView5);
         cardVvip = findViewById(R.id.cardView6);
 
+        cbox = findViewById(R.id.id_checkBox_activity_payment_buyMyself);
+        giftEmail = findViewById(R.id.id_activity_payment_emailGift);
+
+        //
         priceReguler = findViewById(R.id.id_txtView_activity_payment_regPrice);
         priceVip = findViewById(R.id.id_txtView_activity_payment_VIPPrice);
         priceVvip = findViewById(R.id.id_txtView_activity_payment_VVIPPrice);
         tvtotalPrice = findViewById(R.id.id_txtView_activity_payment_totalPAY);
+
+        cbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    giftEmail.setVisibility(View.VISIBLE);
+                }else{
+                    giftEmail.setVisibility(View.GONE);
+                }
+            }
+        });
+
 
         eventTitle = findViewById(R.id.id_txtView_activity_payment_title);
         eventCategory = findViewById(R.id.id_txtView_activity_payment_category);
